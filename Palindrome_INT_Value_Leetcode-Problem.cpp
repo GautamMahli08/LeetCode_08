@@ -7,7 +7,7 @@ bool Is_Pal(int x)
     if(x<0)
         return false;
     long n=x;
-    long reverse=0;
+  //  long reverse=0;
 
         int lastdigit,revers;
         while(x>0){
