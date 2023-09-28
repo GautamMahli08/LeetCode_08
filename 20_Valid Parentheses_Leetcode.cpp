@@ -14,13 +14,14 @@ public:
 
            else if(!st.empty())
            {
-                char c=st.top();
-                if(c=='(' && s[i]==')')
-                      st.pop();
-                else if(c=='[' && s[i]==']')
-                      st.pop();
-                else if(c=='{' && s[i]=='}')
-                      st.pop();                
+                 char c=st.top();
+                if(c=='(' && s[i]!=')')
+                      return false;
+                else if(c=='[' && s[i]!=']')
+                      return false;
+                else if(c=='{' && s[i]!='}')
+                   return false; 
+                   st.pop();              
             }
             else
                 return false;
