@@ -1,40 +1,152 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
-<CodeBlocks_project_file>
-	<FileVersion major="1" minor="6" />
-	<Project>
-		<Option title="Merge_two_linked_list" />
-		<Option pch_mode="2" />
-		<Option compiler="gcc" />
-		<Build>
-			<Target title="Debug">
-				<Option output="bin/Debug/Merge_two_linked_list" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj/Debug/" />
-				<Option type="1" />
-				<Option compiler="gcc" />
-				<Compiler>
-					<Add option="-g" />
-				</Compiler>
-			</Target>
-			<Target title="Release">
-				<Option output="bin/Release/Merge_two_linked_list" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj/Release/" />
-				<Option type="1" />
-				<Option compiler="gcc" />
-				<Compiler>
-					<Add option="-O2" />
-				</Compiler>
-				<Linker>
-					<Add option="-s" />
-				</Linker>
-			</Target>
-		</Build>
-		<Compiler>
-			<Add option="-Wall" />
-			<Add option="-fexceptions" />
-		</Compiler>
-		<Unit filename="main.cpp" />
-		<Extensions>
-			<lib_finder disable_auto="1" />
-		</Extensions>
-	</Project>
-</CodeBlocks_project_file>
+Find Here LeetCode-Code As Well As cpp-Code.
+
+------------------------------- LeetCode ----------------------------------
+
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
+       if(list1==NULL)
+        return list2;
+    if(list2==NULL)
+        return list1;
+
+    ListNode *head=NULL;
+    ListNode *tail=NULL;
+
+    if(list1->val <= list2->val)
+    {
+        head=tail=list1;
+        list1=list1->next;
+    }
+    else
+    {
+        head=tail=list2;
+        list2=list2->next;
+    }
+    while(list1!=NULL && list2!=NULL)
+    {
+        if(list1->val <= list2->val)
+        {
+            tail->next=list1;
+            tail=list1;
+            list1=list1->next;
+        }
+        else
+        {
+            tail->next=list2;
+            tail=list2;
+            list2=list2->next;
+        }
+
+
+        if(list1==NULL)
+            tail->next=list2;
+        else
+        tail->next=list1;
+       
+      }   
+      return head;
+
+    }
+};
+
+
+
+
+----------------------------------------------- cpp -----------------------------------------------
+#include <iostream>
+
+using namespace std;
+struct Node {
+        int data;
+        Node *next;
+        Node (int x)
+        {
+            data=x;
+            next=NULL;
+        }
+
+};
+Node *SortedMerge(Node *a, Node *b)
+{
+    if(a==NULL)
+        return b;
+    if(b==NULL)
+        return a;
+
+    Node *head=NULL;
+    Node *tail=NULL;
+
+    if(a->data <= b->data)
+    {
+        head=tail=a;
+        a=a->next;
+    }
+    else
+    {
+        head=tail=b;
+        b=b->next;
+    }
+    while(a!=NULL && b!=NULL)
+    {
+        if(a->data <= b->data)
+        {
+            tail->next=a;
+            tail=a;
+            a=a->next;
+        }
+        else
+        {
+            tail->next=b;
+            tail=b;
+            b=b->next;
+        }
+
+
+        if(a==NULL)
+            tail->next=b;
+        else
+        tail->next=a;
+
+        }
+        return head;
+}
+void Display(Node *sorts)
+{
+
+    while(sorts!=NULL)
+    {
+        cout<<(sorts->data)<<" ";
+        sorts=sorts->next;
+    }
+}
+
+int main()
+{
+
+Node *a=new Node(1);
+a->next=new Node(2);
+a->next->next=new Node(4);
+a->next->next->next=new Node(5);
+
+Node *b=new Node(1);
+b->next=new Node(3);
+b->next->next=new Node(4);
+b->next->next->next=new Node(6);
+
+Node* Sorts=SortedMerge(a,b);
+
+Display(Sorts);
+
+    return 0;
+}
