@@ -1,38 +1,45 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
-<CodeBlocks_project_file>
-	<FileVersion major="1" minor="6" />
-	<Project>
-		<Option title="IntToRoman" />
-		<Option pch_mode="2" />
-		<Option compiler="gcc" />
-		<Build>
-			<Target title="Debug">
-				<Option output="bin/Debug/IntToRoman" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj/Debug/" />
-				<Option type="1" />
-				<Option compiler="gcc" />
-				<Compiler>
-					<Add option="-g" />
-				</Compiler>
-			</Target>
-			<Target title="Release">
-				<Option output="bin/Release/IntToRoman" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj/Release/" />
-				<Option type="1" />
-				<Option compiler="gcc" />
-				<Compiler>
-					<Add option="-O2" />
-				</Compiler>
-				<Linker>
-					<Add option="-s" />
-				</Linker>
-			</Target>
-		</Build>
-		<Compiler>
-			<Add option="-Wall" />
-			<Add option="-fexceptions" />
-		</Compiler>
-		<Unit filename="main.cpp" />
-		<Extensions />
-	</Project>
-</CodeBlocks_project_file>
+Find here LeetCode-Code As Well As cpp-Code
+
+------------------------------ Leetcode ---------------------------------------------
+
+class Solution {
+public:
+    string intToRoman(int num) {
+        string Roman;
+        vector<string>charc_value = {"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I" };
+        vector<int>int_value = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
+
+        for(int i=0 ; num>0 ; i++){
+            while(num>=int_value[i]){
+                Roman+=charc_value[i];
+                num-=int_value[i];
+            }
+        }
+        return Roman;
+    }
+};
+
+
+-------------------------------- cpp ------------------------------------------------
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+   string IntToRoman(int numb) {
+   string roman ;
+   vector<string>charc_value = {"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
+   vector<int>int_value ={1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
+   for(int i=0 ; numb>0 ; i++) {
+    while(numb>=int_value[i]){
+        roman+=charc_value[i];
+        numb-=int_value[i];
+      }
+   }
+   return roman;
+   }
+int main()
+{
+    cout<<IntToRoman(2327);
+        return 0;
+}
