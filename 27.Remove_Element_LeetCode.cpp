@@ -1,3 +1,27 @@
+Find here Leetcode-code As Well As cpp-Code
+
+
+-------------------------------------- Leetcode ---------------------------------------
+    
+class Solution {
+public:
+    int removeElement(vector<int>& nums, int val) {
+        int container = 0;
+
+        for(int i =0 ; i<nums.size() ; i++)
+        {
+            if(nums[i]!=val)
+            {
+                nums[container]=nums[i];
+                container++;
+            }
+        }
+        return container;
+    }
+};
+
+------------------------------------ cpp ----------------------------------------------
+    
 #include <iostream>
 
 using namespace std;
