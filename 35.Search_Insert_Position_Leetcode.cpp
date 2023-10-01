@@ -1,3 +1,39 @@
+//Find Here Leetcode-Code As Well As cpp-Code
+
+-------------------------------- Leetcode ----------------------------------
+
+class Solution {
+public:
+    int searchInsert(vector<int>& nums, int target) {
+        int siz_e=nums.size();
+        int lower=0;
+        int mid;
+
+        if(target>nums[siz_e-1]){
+            return siz_e;
+        }
+
+        while(lower<=siz_e){
+            mid=(lower+siz_e)/2;
+            if(nums[mid]==target){
+                return mid;
+            }
+
+            if(target<nums[mid]){
+                siz_e=mid-1;
+            }
+            else {
+                lower=mid+1;
+            }
+        }
+        return lower;
+
+    }
+};
+
+
+----------------------------------- cpp --------------------------------
+
 #include <iostream>
 
 using namespace std;
