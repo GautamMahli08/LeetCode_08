@@ -1,3 +1,34 @@
+//Find Here Leetcode-Code As Well As cpp-Code
+
+
+--------------------------------- Leetcode -----------------------------
+
+class Solution {
+public:
+    int lengthOfLastWord(string s) {
+        int length=s.size();
+        int xox=0;
+        int countt=0;
+
+        for(int i=length-1 ; i>=0 ; i--)
+        {
+            if(s[i]==' ' && xox){
+                break;
+            }
+
+            if(s[i]!=' '){
+                xox=1;
+                countt++;
+            }
+        }
+        return countt;
+    }
+};
+
+    
+--------------------------------- cpp ----------------------------------
+    
+
 #include <iostream>
 
 using namespace std;
