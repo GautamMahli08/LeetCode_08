@@ -1,0 +1,143 @@
+// Find Here Leetcode-Code As Well As cpp-Code
+
+-------------------------------- Leetcode ---------------------------------------
+
+                    
+class Solution {
+public:
+    string multiply(string num1, string num2) {
+    int n=num1.size();
+    int m=num2.size();
+
+    vector<int>arr(n+m,0); //(n+m)=2-D array;
+
+    int prod=0;
+    int cur=0;
+     for(int i=n-1 ; i>=0 ; i--){
+
+        for(int j=m-1 ; j>=0 ; j--){
+
+            prod=(num1[i]-48)*(num2[j]-48);
+            cur=arr[i+j+1]+prod;
+            arr[i+j+1]=cur%10;
+            arr[i+j]=arr[i+j]+cur/10;
+        }
+    }
+    string ans;
+
+    for(int length : arr){
+        if(!(ans.empty() && length==0)){
+            ans+=to_string(length);
+        }
+    }
+
+    return ans.empty() ? "0" :ans;
+    }
+    
+};
+
+
+
+-------------------------------------- cpp -------------------------------------
+
+
+                          ------ Used_Vector -------
+                          
+#include <iostream>
+#include <vector>;
+using namespace std;
+
+    string multi_String(string str1, string str2){
+    int n=str1.size();
+    int m=str2.size();
+
+    vector<int>arr(n+m,0);
+    int prod=0;
+    int cur=0;
+     for(int i=n-1 ; i>=0 ; i--){
+
+        for(int j=m-1 ; j>=0 ; j--){
+
+            prod=(str1[i]-48)*(str2[j]-48);
+            cur=arr[i+j+1]+prod;
+            arr[i+j+1]=cur%10;
+            arr[i+j]=arr[i+j]+cur/10;
+        }
+    }
+    string ans;
+
+    for(int length : arr){
+        if(!(ans.empty() && length==0)){
+            ans+=to_string(length);
+        }
+    }
+
+    return ans.empty() ? "0" :ans;
+    }
+int main()
+{
+
+    string str1,str2;
+    str1="123";
+    str2="456";
+
+    cout<<multi_String(str1, str2);
+
+}
+
+
+
+                     ------- Brute-Approach -------
+
+#include <iostream>
+#include <string.h>
+using namespace std;
+
+    string multi_String (string str1, string str2){
+       // int len_1=str1.length();
+      //  int len_2=str2.length();
+    int size_=str1.length()+str2.length();
+    int arr[size_]={0};
+    int cur=0;
+    int prod=0;
+    string ans="";
+
+    for(int i=str1.length()-1 ; i>=0 ; i--){
+
+        for(int j=str2.length()-1 ; j>=0 ; j--){
+
+            prod=(str1[i]-48)*(str2[j]-48);
+            cur=arr[i+j+1]+prod;
+            arr[i+j+1]=cur%10;
+            arr[i+j]=arr[i+j]+cur/10;
+        }
+
+    }
+    int k=0;
+    if(arr[0]==0)
+        k=1;
+    else
+        k=0;
+
+for(int i=k ;i<size_ ; i++) {
+        ans+=arr[i]+'0';
+       }
+
+
+     return ans;
+
+    }
+
+int main()
+{
+    string str1,str2;
+    str1="2";
+    str2="3";
+
+    cout<<multi_String(str1, str2);
+
+
+    return 0;
+}
+
+
