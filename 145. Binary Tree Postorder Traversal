@@ -1,0 +1,79 @@
+---------------------------- LEETCODE ---------------------
+
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+public:
+
+    void postordertraversall(TreeNode *root,vector<int>& output)
+    {
+     if(root==NULL)
+     return;
+    
+        postordertraversall(root->left,output);
+        postordertraversall(root->right,output);
+        output.push_back(root->val);
+    }
+
+    vector<int> postorderTraversal(TreeNode* root) {
+     vector<int>output;
+     postordertraversall(root,output);
+     return output;
+} 
+};
+
+
+------------------------- CPP -------------------------
+
+#include <iostream>
+
+using namespace std;
+
+
+struct Node {
+int data ;
+struct Node *left, *right;
+Node(int v) {
+    data=v;
+    left=right=NULL;
+}
+};
+
+void Preorder (Node *root)
+{
+    if(root!=NULL)
+    {
+      
+        Preorder(root->left);
+        Preorder(root->right);
+     cout<<(root->data)<<" ";
+    }
+}
+int main()
+{
+    struct Node* root=new Node(10);
+    root->left=new Node(20);
+    root->right=new Node(30);
+    root->left->left=new Node(40);
+    root->right->right=new Node(50);
+    root->right->right=new Node(60);
+
+  cout<<"Preorder traversal of Binary tree is : \n";
+  Preorder(root);
+     return 0;
+}
+
+
+
+
+--------------------------- CPP ------------------------------
+
