@@ -1,0 +1,27 @@
+class Solution {
+public:
+    bool canVisitAllRooms(vector<vector<int>>& rooms) {
+        int n=rooms.size();
+     set<int> s;
+    
+     stack<int> mystack;
+     mystack.push(0);
+
+     while(!mystack.empty()){
+        int current=mystack.top();
+       mystack.pop();
+
+       if(s.find(current)==s.end())  {
+             s.insert(current);
+
+                for(int x : rooms[current]) {
+
+                    if(s.find(x)==s.end()) {
+                        mystack.push(x);
+                    }
+                }
+         }
+     }
+    return s.size()==n;
+    }
+};
