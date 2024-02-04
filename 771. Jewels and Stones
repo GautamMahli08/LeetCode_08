@@ -1,0 +1,55 @@
+----------------------------- LEETCODE -------------------------------
+
+class Solution {
+public:
+    int numJewelsInStones(string jewels, string stones) {
+        int count = 0;
+        unordered_set<char> charSet;
+
+    for (char c : jewels) {
+        charSet.insert(c);
+    }
+
+    for (char c : stones) {
+        if (charSet.count(c) > 0) {
+            count++;
+        }
+    }
+
+    return count; 
+    }
+};
+
+----------------------------------- CPP -------------------------------
+
+
+#include <iostream>
+#include <unordered_set>
+
+int numbJewsIsInStones(std::string Jewels, std::string Stone) {
+    int count = 0;
+    std::unordered_set<char> charSet;
+
+    for (char c : Jewels) {
+        charSet.insert(c);
+    }
+
+    for (char c : Stone) {
+        if (charSet.count(c) > 0) {
+            count++;
+        }
+    }
+
+    return count;
+}
+
+int main() {
+    std::string jewels = "zz";
+    std::string stones = "zzZZ";
+
+    int result = numbJewsIsInStones(jewels, stones);
+
+    std::cout << "Number of jewels in stones: " << result << std::endl;
+
+    return 0;
+}
