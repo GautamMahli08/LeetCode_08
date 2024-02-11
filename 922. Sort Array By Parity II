@@ -1,0 +1,68 @@
+----------------------- LEETCODE ---------------------
+
+class Solution {
+public:
+    vector<int> sortArrayByParityII(vector<int>& nums) {
+        int even=0;
+        int odd=1;
+        int length=nums.size();
+
+         while (even < length && odd < length) {
+        while (even < length && nums[even] % 2 == 0)
+            even += 2;
+        
+        while (odd < length && nums[odd] % 2 != 0)
+            odd += 2;
+        
+        if (even < length && odd < length) {
+            int temp = nums[even];
+            nums[even] = nums[odd];
+            nums[odd] = temp;
+            even += 2;
+            odd += 2;
+                }
+        }
+        return nums;  
+    }
+};
+
+
+---------------------------------- CPP ------------------------------- 
+
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+ vector<int> sortArrayByParityII(vector<int>& nums) {
+        int even=0;
+        int odd=1;
+        int length=nums.size();
+
+         while (even < length && odd < length) {
+        while (even < length && nums[even] % 2 == 0)
+            even += 2;
+
+        while (odd < length && nums[odd] % 2 != 0)
+            odd += 2;
+
+        if (even < length && odd < length) {
+            int temp = nums[even];
+            nums[even] = nums[odd];
+            nums[odd] = temp;
+            even += 2;
+            odd += 2;
+                }
+        }
+        return nums;
+    }
+
+int main()
+{
+   vector<int> arr = {1,2,3,4,8,8,8,12};
+   vector<int>ans=sortArrayByParityII(arr);
+   for(int i=0;i<arr.size();i++)
+    cout<<ans[i]<<" ";
+    return 0;
+}
+
