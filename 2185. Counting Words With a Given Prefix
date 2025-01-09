@@ -1,0 +1,32 @@
+#2185. Counting Words With a Given Prefix
+
+class Solution {
+public:
+    int prefixCount(vector<string>& words, string pref) {
+        int count=0;
+        for(int i=0 ; i<words.size(); i++) {
+            string store_word= words[i];
+            if(store_word.find(pref)==0) {
+                count++;
+            }
+        }
+        return count;
+    }
+};
+
+
+
+#_Why_to_use_FIND_
+
+If store_word = "hello_world" and pref = "hello", here's how the search happens:
+
+It starts checking from index 0:
+Match found: "hello" matches starting from index 0.
+store_word.find(pref) returns 0.
+If pref = "world", here's how the search happens:
+
+It starts checking from index 0:
+No match for "world" at index 0.
+It continues checking until index 6:
+Match found: "world" matches starting from index 6.
+store_word.find(pref) returns 6.
